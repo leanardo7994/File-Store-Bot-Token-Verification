@@ -60,11 +60,11 @@ async def start_command(client: Client, message: Message):
         if "verify_" in message.text:
             _, token = message.text.split("_", 1)
             if verify_status['verify_token'] != token:
-                return await message.reply("Your token is invalid or Expired. Try again by clicking /start")
+                return await message.reply("⚠️ YOUR TOKEN IS INVALID or EXPIRED. TRY AGAIN BY CLICKING /start")
             await update_verify_status(id, is_verified=True, verified_time=time.time())
             if verify_status["link"] == "":
                 reply_markup = None
-            await message.reply(f"Your token successfully verified and valid for: 24 Hour", reply_markup=reply_markup, protect_content=False, quote=True)
+            await message.reply(f"CONGRATULATIONS 🎉, YOUR TOKEN SUCCESSFULLY VERIFIED AND VALID FOR: 24 HOUR ✅", reply_markup=reply_markup, protect_content=False, quote=True)
 
         elif len(message.text) > 7 and verify_status['is_verified']:
             try:
@@ -126,7 +126,7 @@ async def start_command(client: Client, message: Message):
                 except:
                     pass
 
-            SD = await message.reply_text("Baka! Files will be deleted After 300 seconds. Save them to the Saved Message now!")
+            SD = await message.reply_text("⚠️ 𝗙𝗜𝗟𝗘𝗦 𝗪𝗜𝗟𝗟 𝗕𝗘 𝗗𝗘𝗟𝗘𝗧𝗘𝗗 𝗔𝗙𝗧𝗘𝗥 𝟯𝟬𝟬 𝗦𝗘𝗖𝗢𝗡𝗗𝗦. 𝗙𝗢𝗥𝗪𝗔𝗥𝗗 𝗧𝗛𝗜𝗦 𝗙𝗜𝗟𝗘𝗦 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗦𝗔𝗩𝗘𝗗 𝗠𝗘𝗦𝗦𝗔𝗚𝗘𝗦!")
             await asyncio.sleep(300)
 
             for snt_msg in snt_msgs:
@@ -138,8 +138,8 @@ async def start_command(client: Client, message: Message):
 
         elif verify_status['is_verified']:
             reply_markup = InlineKeyboardMarkup(
-                [[InlineKeyboardButton("⚡️ ᴀʙᴏᴜᴛ", callback_data = "about"),
-                  InlineKeyboardButton('🍁 sᴇʀɪᴇsғʟɪx', url='https://t.me/Team_Netflix/40')]]
+                [[InlineKeyboardButton("👤 ABOUT ME", callback_data = "about"),
+                  InlineKeyboardButton("🔒 CLOSE", callback_data = "close")]]
             )
             await message.reply_text(
                 text=START_MSG.format(
@@ -157,16 +157,16 @@ async def start_command(client: Client, message: Message):
         else:
             verify_status = await get_verify_status(id)
             if IS_VERIFY and not verify_status['is_verified']:
-                short_url = f"publicearn.in"
+                short_url = f"gplinks.com"
                 # TUT_VID = f"https://t.me/How_to_Download_7x/35"
                 token = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
                 await update_verify_status(id, verify_token=token, link="")
                 link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API,f'https://telegram.dog/{client.username}?start=verify_{token}')
                 btn = [
-                    [InlineKeyboardButton("• ᴏᴘᴇɴ ʟɪɴᴋ", url=link)],
-                    [InlineKeyboardButton('ᴛᴜᴛᴏʀɪᴀʟ •', url=TUT_VID)]
+                    [InlineKeyboardButton("OPEN LINK", url=link)],
+                    [InlineKeyboardButton('HOW TO DOWNLOAD THIS LINK ?', url=TUT_VID)]
                 ]
-                await message.reply(f"Your Ads token is expired, refresh your token and try again.\n\nToken Timeout: {get_exp_time(VERIFY_EXPIRE)}\n\nWhat is the token?\n\nThis is an ads token. If you pass 1 ad, you can use the bot for 24 Hour after passing the ad.", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
+                await message.reply(f"⚠️ YOUR AD TOKEN IS EXPIRED, REFRESH YOUR TOKEN AND TRY AGAIN.\n\nTOKEN TIMEOUT : {get_exp_time(VERIFY_EXPIRE)}⏳\n\nTHIS IS AN AD TOKEN, IF YOU PASS 1 AD YOU CAN USE THE BOT FOR 24 HOUR AFTER PASSING THE AD", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
 
 
 

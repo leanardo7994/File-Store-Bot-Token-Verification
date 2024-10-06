@@ -30,7 +30,7 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", ""))
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 #start message
-START_MSG = os.environ.get("START_MESSAGE", "Hello {first}, Thanks for using me :D @team_netflix ⚡️.")
+START_MSG = os.environ.get("START_MESSAGE", "<b>Hello {mention} 👋,\n\n</b> <b>I Can Store</b> 𝐌𝐎𝐕𝐈𝐄𝐒 𝐄𝐌𝐏𝐎𝐑𝐈𝐎 <b>Files In This Bot And Other Users Can Access It From Special Link 📎</b>")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "6497757690").split()):
@@ -51,7 +51,7 @@ PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" e
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True'
 
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
-USER_REPLY_TEXT = "ʙᴀᴋᴋᴀ ! ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴍʏ ꜱᴇɴᴘᴀɪ!!"
+USER_REPLY_TEXT = "<b>YOU CAN'T SEND/FORWARD MESSAGES DIRECTLY IN HERE 🚫\n\nKindly Please Join This Channel To Use This Bot @Movies_Emperio.\n\nIf You Have Any Doubts & Queries Ask In @MECommentBot 📮</b>"
 
 ADMINS.append(OWNER_ID)
 ADMINS.append(6497757690)
